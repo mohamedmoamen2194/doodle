@@ -1,65 +1,93 @@
-import Image from "next/image";
+import ChalkHero from "@/components/home/ChalkHero"
+import NewDrops from "@/components/home/NewDrops"
+import FeatureGrid from "@/components/home/FeatureGrid"
+import Link from "next/link"
+import { ArrowRight, Send, Sparkles } from "lucide-react"
+
+const marqueeItems = [
+  "FREE SHIPPING ON ORDERS OVER $50",
+  "NEW DROP EVERY MONTH",
+  "SKETCHBOOK CLUB — JOIN NOW",
+  "LIMITED EDITION INKS",
+  "STUDIO SESSIONS EVERY WEEK",
+  "FREE SHIPPING ON ORDERS OVER $50",
+  "NEW DROP EVERY MONTH",
+  "SKETCHBOOK CLUB — JOIN NOW",
+  "LIMITED EDITION INKS",
+  "STUDIO SESSIONS EVERY WEEK",
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="flex flex-col">
+      <ChalkHero />
+      <NewDrops />
+
+      <section className="relative py-16 md:py-20 bg-surface-container border-y-4 border-primary overflow-hidden">
+        <div className="relative flex overflow-x-hidden scrollbar-hide">
+          <div className="flex animate-marquee gap-12 whitespace-nowrap py-2">
+            {marqueeItems.map((item, i) => (
+              <span key={i} className="inline-flex items-center gap-3 font-label text-label-sm md:text-[14px] text-on-surface tracking-[0.15em] uppercase">
+                <Sparkles className="w-3.5 h-3.5 text-primary shrink-0" />
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className="flex animate-marquee gap-12 whitespace-nowrap py-2" aria-hidden="true">
+            {marqueeItems.map((item, i) => (
+              <span key={i} className="inline-flex items-center gap-3 font-label text-label-sm md:text-[14px] text-on-surface tracking-[0.15em] uppercase">
+                <Sparkles className="w-3.5 h-3.5 text-primary shrink-0" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FeatureGrid />
+
+      <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <span className="doodle-bg-text top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center rotate-6" style={{ fontSize: "clamp(8rem, 25vw, 20rem)" }}>
+            INK
+          </span>
+        </div>
+
+        <div className="relative max-w-3xl mx-auto px-4 md:px-16 text-center space-y-8">
+          <div className="flex items-center justify-center gap-3">
+            <Sparkles className="w-5 h-5 text-primary" />
+            <span className="font-label text-label-sm text-primary tracking-[0.2em] uppercase">Newsletter</span>
+          </div>
+
+          <h2 className="font-display text-headline-lg md:text-[clamp(2.5rem,5vw,3.5rem)] leading-tight">
+            Stay Inked.
+          </h2>
+
+          <p className="font-body text-body-lg text-on-surface/70 max-w-lg mx-auto">
+            Be the first to know about new drops, sketchbook tips, and exclusive studio access.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="your@inbox.com"
+              className="flex-1 bg-surface-container border-2 border-outline-variant rounded-xl px-6 py-4 font-body text-body-md text-on-surface placeholder:text-outline/50 focus:outline-none focus:border-primary transition-colors duration-300"
+            />
+            <button
+              type="submit"
+              className="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-body font-bold text-body-md
+                         shadow-hard transition-all duration-300 hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] flex items-center justify-center gap-3 shrink-0"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Subscribe
+              <Send className="w-4 h-4" />
+            </button>
+          </div>
+
+          <p className="font-label text-label-sm text-outline/50">
+            No spam. Just ink. Unsubscribe anytime.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
-  );
+  )
 }

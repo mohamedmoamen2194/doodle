@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #1f0e13;
+  --color-primary: #ffb1c4;
+  --color-primary-container: #ff4a8d;
+  --color-secondary: #a8cec5;
+  --color-on-surface: #fbdae1;
+  --color-surface-container: #2d1a1f;
+  --color-surface-container-high: #382529;
+  --color-surface-container-low: #28161b;
+  --color-outline: #ac878f;
+  --color-outline-variant: #5c3f46;
+  --color-surface-variant: #442f34;
+  --color-surface-bright: #493338;
+
+  --font-display: var(--font-display), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--font-body), "Hanken Grotesk", sans-serif;
+  --font-label: var(--font-label), "Space Mono", monospace;
+
+  --font-size-display-lg: 72px;
+  --font-size-display-lg--line-height: 1.1;
+  --font-size-display-lg--letter-spacing: -0.04em;
+  --font-size-headline-lg: clamp(2rem, 5vw, 48px);
+  --font-size-headline-lg--line-height: 1.2;
+  --font-size-headline-md: clamp(1.25rem, 3vw, 24px);
+  --font-size-headline-md--line-height: 1.3;
+  --font-size-body-lg: 18px;
+  --font-size-body-lg--line-height: 1.6;
+  --font-size-body-md: 16px;
+  --font-size-body-md--line-height: 1.5;
+  --font-size-label-sm: 12px;
+  --font-size-label-sm--line-height: 1.4;
+  --font-size-label-sm--letter-spacing: 0.05em;
+
+  --shadow-hard: 4px 4px 0px #ffb1c4;
+  --shadow-hard-sm: 2px 2px 0px #ffb1c4;
+  --shadow-hard-white: 4px 4px 0px #fbdae1;
+  --shadow-hard-primary: 4px 4px 0px #ff4a8d;
+
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 20s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-scribble: scribble 0.3s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--tw-rotate, 0deg)); }
+}
+
+@keyframes scribble {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+}
+
+.doodle-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.doodle-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2,6 C30,2 50,10 80,6 C110,2 140,12 170,6 C185,2 195,8 200,6' stroke='%23ffb1c4' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+  background-size: 200px 12px;
+  animation: scribble 0.5s ease-out;
+}
+
+.doodle-bg-text {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(6rem, 20vw, 14rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  opacity: 0.06;
+  color: var(--color-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.corkboard-bg {
+  background-image:
+    radial-gradient(circle, #ffb1c4 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: #2d1a1f;
+}
+
+.corkboard-overlay {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(45, 26, 31, 0.8) 100%
+  );
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
