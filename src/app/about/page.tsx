@@ -1,5 +1,4 @@
-import Link from "next/link"
-import { ArrowRight, Sparkles, Star, Heart, Zap, Palette, MessageCircle, Send, Puzzle, Pen, Users, Swords } from "lucide-react"
+import { Sparkles, Star, Heart, Zap, Palette, Send, Puzzle, Pen, Users, Swords } from "lucide-react"
 
 const milestones = [
   { year: "2020", title: "First Sketch", desc: "A single notebook, a single pen, and an idea that wouldn't quit. Founded in a tiny studio apartment.", icon: "✏️" },

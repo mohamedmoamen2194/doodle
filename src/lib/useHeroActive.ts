@@ -5,13 +5,11 @@ import { usePathname } from "next/navigation"
 
 export function useHeroActive() {
   const pathname = usePathname()
+  const isHome = pathname === "/"
   const [active, setActive] = useState(false)
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setActive(false)
-      return
-    }
+    if (!isHome) return
 
     function check() {
       const section = document.getElementById("hero-section")
@@ -23,7 +21,7 @@ export function useHeroActive() {
     check()
     window.addEventListener("scroll", check, { passive: true })
     return () => window.removeEventListener("scroll", check)
-  }, [pathname])
+  }, [isHome])
 
-  return active
+  return isHome ? active : false
 }

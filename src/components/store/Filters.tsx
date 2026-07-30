@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useCallback } from "react"
-import { Sparkles, RotateCcw, Pen, Pipette, Monitor } from "lucide-react"
+import { Sparkles, RotateCcw, Pen } from "lucide-react"
 
 const mediums: { id: string; icon: React.ComponentType<{ className?: string }> }[] = []
 
@@ -18,24 +18,21 @@ export default function Filters() {
 
   const hasActiveFilters = selectedMediums.length > 0 || selectedArtists.length > 0
 
-  const toggleFilter = useCallback(
-    (key: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString())
-      const existing = params.getAll(key)
+  const toggleFilter = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    const existing = params.getAll(key)
 
-      if (existing.includes(value)) {
-        const newValues = existing.filter((v) => v !== value)
-        params.delete(key)
-        newValues.forEach((v) => params.append(key, v))
-      } else {
-        params.append(key, value)
-      }
+    if (existing.includes(value)) {
+      const newValues = existing.filter((v) => v !== value)
+      params.delete(key)
+      newValues.forEach((v) => params.append(key, v))
+    } else {
+      params.append(key, value)
+    }
 
-      const qs = params.toString()
-      router.push(qs ? `${pathname}?${qs}` : pathname)
-    },
-    [router, pathname, searchParams],
-  )
+    const qs = params.toString()
+    router.push(qs ? `${pathname}?${qs}` : pathname)
+  }
 
   const resetFilters = useCallback(() => {
     router.push(pathname)

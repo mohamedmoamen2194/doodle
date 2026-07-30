@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { db, schema } from '@/lib/db';
 import { getAuthUser } from '@/lib/auth';
-import { eq, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
 export async function GET() {
   try {
@@ -27,7 +27,7 @@ export async function GET() {
       .orderBy(schema.users.createdAt);
 
     return NextResponse.json({ users });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

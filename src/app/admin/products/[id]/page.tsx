@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { Plus, X, Upload, ArrowLeft } from 'lucide-react'
 import { cn, slugify, formatPrice } from '@/lib/utils'
@@ -255,7 +256,7 @@ export default function ProductEditPage() {
             <div className="grid grid-cols-2 gap-3">
               {images.map((img) => (
                 <div key={img.id} className="relative aspect-square rounded-lg bg-surface-variant border border-outline-variant overflow-hidden group">
-                  <img src={img.url} alt="" className="w-full h-full object-cover" />
+                  <Image src={img.url} alt="" width={200} height={200} className="w-full h-full object-cover" unoptimized />
                   <button
                     type="button"
                     onClick={() => setImages((prev) => prev.filter((x) => x.id !== img.id))}

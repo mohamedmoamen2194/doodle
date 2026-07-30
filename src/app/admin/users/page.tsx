@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
-import { Search, ChevronDown, ChevronUp, Mail, ShoppingBag } from "lucide-react"
+import { Search, ChevronDown, ChevronUp } from "lucide-react"
 
 type User = {
   id: string

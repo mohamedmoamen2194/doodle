@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
       .orderBy(desc(schema.orders.createdAt));
 
     return NextResponse.json({ orders });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       .where(eq(schema.orders.id, order.id));
 
     return NextResponse.json({ order: createdOrder }, { status: 201 });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

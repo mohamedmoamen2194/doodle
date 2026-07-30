@@ -16,7 +16,7 @@ export async function GET(
     }
 
     return NextResponse.json(offer);
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -57,7 +57,7 @@ export async function PUT(
       .returning();
 
     return NextResponse.json(offer);
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -82,7 +82,7 @@ export async function DELETE(
     await db.delete(schema.offers).where(eq(schema.offers.id, id));
 
     return NextResponse.json({ message: 'Offer deleted' });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

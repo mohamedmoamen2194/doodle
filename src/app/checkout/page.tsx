@@ -7,7 +7,7 @@ import { Sparkles, Star, ArrowLeft, ShoppingBag, CreditCard } from 'lucide-react
 import { formatPrice } from '@/lib/utils'
 
 export default function CheckoutPage() {
-  const { items, totalPrice, totalItems } = useCart()
+  const { items, totalPrice } = useCart()
   const [agreeTerms, setAgreeTerms] = useState(false)
 
   const shipping = 0

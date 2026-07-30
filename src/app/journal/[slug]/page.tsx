@@ -1,13 +1,12 @@
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft, Calendar, Clock, Sparkles, Pen, BookOpen } from "lucide-react"
+import { ArrowLeft, BookOpen } from "lucide-react"
 
 export default async function JournalArticlePage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+  const {} = await params
 
   return (
     <div className="flex flex-col">

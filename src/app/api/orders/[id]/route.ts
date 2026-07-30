@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db, schema } from '@/lib/db';
 import { getAuthUser } from '@/lib/auth';
-import { eq, and } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 
 export async function GET(
   request: NextRequest,
@@ -40,7 +40,7 @@ export async function GET(
     }));
 
     return NextResponse.json({ ...order, items: itemsWithProduct });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -74,7 +74,7 @@ export async function PUT(
       .returning();
 
     return NextResponse.json(order);
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

@@ -39,7 +39,7 @@ export async function GET(
       .orderBy(desc(schema.orders.createdAt));
 
     return NextResponse.json({ ...targetUser, orders });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -79,7 +79,7 @@ export async function PUT(
       });
 
     return NextResponse.json(updated);
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

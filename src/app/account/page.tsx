@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Sparkles, Star, Pen, User, Package, ExternalLink, Pencil, MapPin } from "lucide-react"
+import { Sparkles, Star, User, Package, ExternalLink, Pencil, MapPin } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
 import { useAuth } from "@/lib/auth-context"
 

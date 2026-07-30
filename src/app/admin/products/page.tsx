@@ -26,7 +26,7 @@ export default function AdminProducts() {
   const [search, setSearch] = useState("")
   const [page, setPage] = useState(1)
   const [products, setProducts] = useState<Product[]>([])
-  const [totalPages, setTotalPages] = useState(1)
+  const [, setTotalPages] = useState(1)
 
   useEffect(() => {
     async function load() {

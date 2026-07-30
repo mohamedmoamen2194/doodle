@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     const url = await uploadImage(file, 'products');
 
     return NextResponse.json({ url });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

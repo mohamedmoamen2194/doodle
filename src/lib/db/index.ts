@@ -14,6 +14,7 @@ function getDb() {
 
 const db = new Proxy({} as ReturnType<typeof getDb>, {
   get(_, prop) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (getDb() as any)[prop];
   },
 });

@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     await db.insert(schema.newsletters).values({ email });
 
     return NextResponse.json({ message: 'Subscribed successfully' }, { status: 201 });
-  } catch (error) {
+  }   catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

@@ -71,7 +71,6 @@ void main() {
 
 export default function ChalkHero() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [progress, setProgress] = useState(0)
 
   const handleScroll = useCallback(() => {

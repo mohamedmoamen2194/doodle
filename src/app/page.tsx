@@ -1,8 +1,7 @@
 import ChalkHero from "@/components/home/ChalkHero"
 import NewDrops from "@/components/home/NewDrops"
 import FeatureGrid from "@/components/home/FeatureGrid"
-import Link from "next/link"
-import { ArrowRight, Send, Sparkles } from "lucide-react"
+import { Send, Sparkles } from "lucide-react"
 
 const marqueeItems = [
   "FREE SHIPPING ON ORDERS OVER $50",
